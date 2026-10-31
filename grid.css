@@ -1,0 +1,165 @@
+/* 
+***************
+Grid
+***************
+*/
+
+@font-face {
+     font-family: 'HGKBUnica77VIPBeta';
+     src: url('fonts/HGKBUnica77VIPBeta.woff2') format('woff2');
+   }
+
+:root {
+  --columns: 14;
+  --gap: 0px; /* You can adjust the gap size here */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  font-size: 10vw;
+  display: flex;
+  justify-content: center; /*wo boxen in reihen sind*/
+  flex-wrap: wrap;
+  gap: var(--gap);
+  width: 100%;
+}
+
+.block {
+  color: white;
+  background-color: black;
+  font-size: 10vw;
+  line-height: 0.8;
+  padding: 20px;
+  letter-spacing: 0.009em;
+}
+
+.block-left {text-align: left;}
+.block-center  {text-align: center;}
+.block-right  {text-align: right;}
+
+
+
+.wrap {
+  color: white;
+  background-color: black;
+  font-size: 10vw;
+  line-height: 1;
+  padding: 20px; 
+  letter-spacing: 0.009em;
+  text-wrap: balance;
+  max-width: 70%;
+}
+
+.wrap-left   { text-align: left;}
+.wrap-center { text-align: center;}
+.wrap-right  { text-align: right;}
+
+.col {
+  flex: 0 0 auto; /* Allows flex-basis to be auto-calculated */
+  box-sizing: border-box;
+  padding: 10px; 
+  line-height: 0.6; 
+  display: flex;
+  align-items: center; /*vertikal*/
+  justify-content: flex-start; /*start, center, end*/ /*horizontal*/ /*wo text in box ist*/
+}
+
+
+.col-center {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
+
+/* Correctly calculated column widths considering the gap */
+.col-1 {
+  flex: 0 0
+    calc(
+      100% / var(--columns) * 1 -
+        (var(--gap) * (var(--columns) - 1) / var(--columns))
+    );
+}
+.col-2 {
+  flex: 0 0
+    calc(
+      100% / var(--columns) * 2 -
+        (var(--gap) * (var(--columns) - 2) / var(--columns))
+    );
+}
+.col-3 {
+  flex: 0 0
+    calc(
+      100% / var(--columns) * 3 -
+        (var(--gap) * (var(--columns) - 3) / var(--columns))
+    );
+}
+
+.col-4 {
+  flex: 0 0
+    calc(
+      100% / var(--columns) * 4 -
+        (var(--gap) * (var(--columns) - 4) / var(--columns))
+    );
+}
+
+.col-5 {
+  flex: 0 0
+    calc(
+      100% / var(--columns) * 5 -
+        (var(--gap) * (var(--columns) - 5) / var(--columns))
+    );
+}
+
+.col-6 {
+  flex: 0 0
+    calc(
+      100% / var(--columns) * 6 -
+        (var(--gap) * (var(--columns) - 6) / var(--columns))
+    );
+}
+
+
+
+
+@media (max-width: 768px) {
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5 {
+    flex: 0 0 calc(100%);
+  }
+}
+
+.metrics { 
+  width: 100%; 
+  height: 90vh;
+  display: block; 
+  margin: 0 auto; 
+}
+
+.metrics line { 
+  stroke: white; 
+  vector-effect: non-scaling-stroke; 
+}
+
+.metrics text { 
+  fill: white; 
+  font-size: 40px; 
+  font-family: 'HGKBUnica77VIPBeta', sans-serif; 
+  font-weight: 100;
+}
+  
+.metrics .q {
+  font-family: 'HGKBRuderPlakatLLVar';
+  font-size: 1000px;
+  font-variation-settings: 'YTUC' 900, 'YTLC' 500, 'YTDE' 100;
+}
+
+.metrics .red { 
+  fill: red; 
+  stroke: red; 
+  mix-blend-mode: normal; }

@@ -1,0 +1,158 @@
+/** import fonts **/
+@font-face {
+  font-family: 'HGKBRuderPlakatLLVar';
+  src: url('fonts/HGKBRuderPlakatLLVar.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HGKBRuderKonturLLVIP';
+  src: url('fonts/HGKBRuderKonturLLVIP.woff2') format('woff2');
+font-weight: normal;
+  font-style: normal;
+  }
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'HGKBRuderPlakatLLVar', sans-serif;
+  font-variation-settings: 'YTUC' 150;
+  background-color: black;
+
+}
+
+/* Beide Hälften quadratisch: Seitenlänge = die kleinere Seite aus halber Fensterbreite und Fensterhöhe.
+   Bleibt Platz übrig, wird das Ganze mittig auf Schwarz gesetzt. */
+:root { --side: min(50vw, 100vh); }
+
+.layout {
+  display: flex;
+  width: calc(var(--side) * 2);
+  height: var(--side);
+  margin: 0 auto;
+  position: relative;
+  top: calc((100vh - var(--side)) / 2);
+}
+
+.camera {
+flex: 0 0 var(--side);
+  width: var(--side);
+  height: var(--side);
+  position: relative;
+  overflow: hidden;
+  background: black;
+  color: white;
+}
+.camera video,
+.camera canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#slider{
+    width: 100%;
+}
+
+#slider .col{
+    flex: 1 1 100%;
+}
+
+.content {
+  flex: 0 0 var(--side);
+  width: var(--side);
+  height: var(--side);
+  position: relative;       /* wie .col2 im Template */
+  overflow-x: hidden;
+  overflow-y: auto;         /* lange Antworten bleiben scrollbar statt abgeschnitten */
+  display: flex;
+  align-items: center;
+}
+
+.row {
+  background-color: rgb(0,0,0);
+  color: rgb(255,255,255);
+}
+
+.row2 {
+  background-color: rgb(0,0,0);
+  color: rgb(255,255,255);
+}
+
+.col {
+  /*border: 0.1px solid var(--color-primary);*/
+  min-width:0;
+}
+
+.col2 {
+  /*border: 0.1px solid var(--color-primary);*/
+  min-width:0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Slot-Machine-Ladescreen: feste Feldbreite, damit nichts springt */
+.slot {
+  display: inline-block;
+  width: 0.55em;          /* wird von SLOT_CELL in script.js überschrieben */
+  height: 1em;
+  line-height: 1;
+  text-align: center;
+}
+
+/* zwei rote Balken (oben und unten), solange Gemini das Bild liest */
+.camera.reading::before,
+.camera.reading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: red;
+  pointer-events: none;
+  z-index: 5;
+}
+.camera.reading::before { top: 0; }
+.camera.reading::after { bottom: 0; }
+
+/* Statuszeile der Live-Kästchen (unten links in der Kamera) */
+.live-status {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  max-width: calc(100% - 24px);
+  padding: 4px 8px;
+  font-family: 'HGKBUnica77VIPBeta', sans-serif;
+  font-size: 12px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+.live-status.error { color: red; }
+.live-status:empty { display: none; }
+
+/* Anzeige, was bei Enter erkannt und entschieden wurde (unten rechts in der Kamera) */
+.decision {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  max-width: 60%;
+  padding: 4px 8px;
+  font-family: 'HGKBUnica77VIPBeta', sans-serif;
+  font-size: 12px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: 6;
+}
+.decision:empty { display: none; }
+
+/* Grid (#): Höhe richtet sich nach der quadratischen Hälfte statt nach dem Fenster */
+.metrics {
+  height: calc(var(--side) * 0.9);
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Slider + Charset + Grid</title>
+    <link rel="stylesheet" href="./default.css" />
+    <link rel="stylesheet" href="./grid.css" />
+    <link rel="stylesheet" href="./slider.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+<div class="layout">
+
+<div class="camera">
+<!-- AI camera code thing -->
+  <!--  <video id="video" autoplay playsinline width="640" height="480"></video>
+        <canvas id="canvas" width="640" height="480"></canvas> --> 
+</div>
+
+<!-- rechti site screen -->
+<div class="content">
+    <div class="row" id="slider">
+      <div class="col col-12">
+    <div class="wrap wrap wrap-center" id="text"></div>  
+       <!-- <div class="wrap wrap-left" id="text">press "enter" to start</div>
+     <div class="wrap wrap-center" id="text">Why Will We Be The Future</div>
+   <div class="wrap wrap-right" id="text">Why Will We Be The Future</div> -->
+   <!-- tecnical part-->
+<svg class="metrics hidden" viewBox="-700 -1450 1842 1950">  <!--viewbox = zeichenfläche (x(links), y(oben), breite, höhe)-->
+  <text class="q" id="q" x="0" y="0">Q</text> <!--(horizonatl -700, 0, 1142 und vertikal -1400, 0, 340)-->
+
+  <line id="ascLine" x1="-700" x2="1142" y1="-1346" y2="-1346"/> <!--x1 y1 stat,x2 y2 ende-->
+  <line id="capLine" x1="-700" x2="1142" y1="-1142" y2="-1142"/>
+  <line id="xLine" x1="-700" x2="1142" y1="-905"  y2="-905"/>
+  <line x1="-700" x2="1142" y1="0"     y2="0" class="red"/>
+  <line id="deLine" x1="-700" x2="1142" y1="204"   y2="204"/>
+
+  <line x1="0"   x2="0"   y1="-1450" y2="500"/>
+  <line id="advLine" x1="442" x2="442" y1="-1450" y2="500"/>
+
+  <text id="ascLabel" x="-680" y="-1360">Typo Ascender</text>
+  <text id="capLabel" x="-680" y="-1156">Cap Height</text>
+  <text id="xLabel" x="-680" y="-919">x-Height</text>
+  <text x="-680" y="-14" class="red">Baseline</text>
+  <text id="deLabel" x="-680" y="190">Typo Descender</text>
+
+  <text id="ascNum" x="1122" y="-1360" text-anchor="end">1346</text> <!--text anchor end macht, dass zahl am endi rechtsbündig isch, otherwise würd sie wie usem bild laufe-->
+  <text id="capNum" x="1122" y="-1156" text-anchor="end">1142</text>
+  <text id="xNum" x="1122" y="-919"  text-anchor="end">905</text>
+  <text x="1122" y="-14"   text-anchor="end" class="red">0</text>
+  <text id="deNum" x="1122" y="190"   text-anchor="end">-204</text>
+
+  <text id="lsbNum" x="-20" y="480" text-anchor="end">5</text>
+  <text id="advNum" x="221" y="480" text-anchor="middle">442</text>
+  <text id="rsbNum" x="462" y="480">5</text>
+</svg>
+
+<!-- buchstaben-uswahl -->
+<div id="picker" class="picker"></div>
+
+      </div>
+    </div>
+    
+       </div> 
+</div>
+<script src="./diag.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+<script src="./camera.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.js" crossorigin="anonymous"></script>
+<script src="./hand.js"></script>
+ <script src="./metrics.js"></script>
+  <script src="./tts.js"></script>
+ <script src="script.js"></script>
+  </body>
+</html>
